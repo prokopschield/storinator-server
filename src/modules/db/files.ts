@@ -17,7 +17,7 @@
  */
 
 import database from './db';
-import { queue } from './queue';
+import { default as queueObj, queue } from './queue';
 import { File } from './types';
 
 const TABLE_NAME = 'files';
@@ -61,13 +61,19 @@ queue(() =>
 	)
 );
 
-for (const column of ['owner', 'dir', 'name']) {
-	database.createIndex(
-		TABLE_NAME,
-		`${TABLE_NAME}_by_${column}`,
-		column as keyof File
-	);
-}
+queueObj.promise.then(() => {
+	for (const column of ['owner', 'dir', 'name']) {
+		queueObj.promise.then(() =>
+			queue(() =>
+				database.createIndex(
+					TABLE_NAME,
+					`${TABLE_NAME}_by_${column}`,
+					column as keyof File
+				)
+			)
+		);
+	}
+});
 
 export function getBy(pick: Partial<File>) {
 	return database.selectFrom(TABLE_NAME, '*', pick);

@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"start": "node lib/cli",
-		"install": "tsc",
+		"install": "git pull && tsc",
 		"lint": "eslint -c .eslintrc.json --ext .ts ./src"
 	},
 	"author": "Prokop Schield",

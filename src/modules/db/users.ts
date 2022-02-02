@@ -17,40 +17,43 @@
  */
 
 import database from './db';
+import { queue } from './queue';
 import { User } from './types';
 
 const TABLE_NAME = 'users';
 
-database.createTable(
-	TABLE_NAME,
-	true,
-	{
-		username: {
-			type: 'ascii',
+queue(() =>
+	database.createTable(
+		TABLE_NAME,
+		true,
+		{
+			username: {
+				type: 'ascii',
+			},
+			password: {
+				type: 'ascii',
+			},
+			token: {
+				type: 'ascii',
+			},
+			validFrom: {
+				type: 'bigint',
+			},
+			validUntil: {
+				type: 'bigint',
+			},
+			byteLimit: {
+				type: 'bigint',
+			},
+			fileLimit: {
+				type: 'bigint',
+			},
+			limitsReset: {
+				type: 'bigint',
+			},
 		},
-		password: {
-			type: 'ascii',
-		},
-		token: {
-			type: 'ascii',
-		},
-		validFrom: {
-			type: 'bigint',
-		},
-		validUntil: {
-			type: 'bigint',
-		},
-		byteLimit: {
-			type: 'bigint',
-		},
-		fileLimit: {
-			type: 'bigint',
-		},
-		limitsReset: {
-			type: 'bigint',
-		},
-	},
-	'username'
+		'username'
+	)
 );
 
 export function get(username: string) {

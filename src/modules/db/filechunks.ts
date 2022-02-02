@@ -17,31 +17,34 @@
  */
 
 import database from './db';
+import { queue } from './queue';
 import { FileChunk } from './types';
 
 const TABLE_NAME = 'fileChunks';
 
-database.createTable(
-	TABLE_NAME,
-	true,
-	{
-		uid: {
-			type: 'bigint',
+queue(() =>
+	database.createTable(
+		TABLE_NAME,
+		true,
+		{
+			uid: {
+				type: 'bigint',
+			},
+			chunk: {
+				type: 'ascii',
+			},
+			file: {
+				type: 'bigint',
+			},
+			owner: {
+				type: 'ascii',
+			},
+			size: {
+				type: 'bigint',
+			},
 		},
-		chunk: {
-			type: 'ascii',
-		},
-		file: {
-			type: 'bigint',
-		},
-		owner: {
-			type: 'ascii',
-		},
-		size: {
-			type: 'bigint',
-		},
-	},
-	'uid'
+		'uid'
+	)
 );
 
 export function get(uid: bigint) {

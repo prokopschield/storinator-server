@@ -19,6 +19,7 @@
 import { ScylloClient } from 'scyllo';
 
 import config from '../../config';
+import { queue } from './queue';
 import { Chunk, File, FileChunk, User } from './types';
 
 const database = new ScylloClient<{
@@ -36,6 +37,6 @@ const database = new ScylloClient<{
 	},
 });
 
-database.useKeyspace(config.obj.SCYLO.str.keyspace, true);
+queue(() => database.useKeyspace(config.obj.SCYLO.str.keyspace, true));
 
 export = database;

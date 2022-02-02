@@ -17,45 +17,48 @@
  */
 
 import database from './db';
+import { queue } from './queue';
 import { File } from './types';
 
 const TABLE_NAME = 'files';
 
-database.createTable(
-	TABLE_NAME,
-	true,
-	{
-		uid: {
-			type: 'bigint',
+queue(() =>
+	database.createTable(
+		TABLE_NAME,
+		true,
+		{
+			uid: {
+				type: 'bigint',
+			},
+			owner: {
+				type: 'ascii',
+			},
+			size: {
+				type: 'bigint',
+			},
+			numChunks: {
+				type: 'bigint',
+			},
+			chunks: {
+				type: 'list',
+				typeDef: 'bigint',
+			},
+			dirName: {
+				type: 'ascii',
+			},
+			fileName: {
+				type: 'ascii',
+			},
+			sharedWith: {
+				type: 'list',
+				typeDef: 'ascii',
+			},
+			public: {
+				type: 'boolean',
+			},
 		},
-		owner: {
-			type: 'ascii',
-		},
-		size: {
-			type: 'bigint',
-		},
-		numChunks: {
-			type: 'bigint',
-		},
-		chunks: {
-			type: 'list',
-			typeDef: 'bigint',
-		},
-		dirName: {
-			type: 'ascii',
-		},
-		fileName: {
-			type: 'ascii',
-		},
-		sharedWith: {
-			type: 'list',
-			typeDef: 'ascii',
-		},
-		public: {
-			type: 'boolean',
-		},
-	},
-	'uid'
+		'uid'
+	)
 );
 
 for (const column of ['owner', 'dir', 'name']) {

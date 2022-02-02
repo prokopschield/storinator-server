@@ -17,28 +17,31 @@
  */
 
 import database from './db';
+import { queue } from './queue';
 import { Chunk } from './types';
 
 const TABLE_NAME = 'chunks';
 
-database.createTable(
-	TABLE_NAME,
-	true,
-	{
-		hash: {
-			type: 'ascii',
+queue(() =>
+	database.createTable(
+		TABLE_NAME,
+		true,
+		{
+			hash: {
+				type: 'ascii',
+			},
+			owner: {
+				type: 'ascii',
+			},
+			size: {
+				type: 'bigint',
+			},
+			data: {
+				type: 'blob',
+			},
 		},
-		owner: {
-			type: 'ascii',
-		},
-		size: {
-			type: 'bigint',
-		},
-		data: {
-			type: 'blob',
-		},
-	},
-	'hash'
+		'hash'
+	)
 );
 
 export function get(hash: string) {

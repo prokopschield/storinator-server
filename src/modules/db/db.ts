@@ -30,10 +30,9 @@ const database = new ScylloClient<{
 	client: {
 		keyspace: config.obj.SCYLO.obj.client.str.keyspace,
 		localDataCenter: config.obj.SCYLO.obj.client.str.localDataCenter,
-		contactPoints:
-			config.obj.SCYLO.obj.client.obj.localDataCenter.array.map(
-				(contactPoint) => String(contactPoint)
-			),
+		contactPoints: config.obj.SCYLO.obj.client.obj.contactPoints.array.map(
+			(contactPoint) => String(contactPoint)
+		),
 	},
 });
 

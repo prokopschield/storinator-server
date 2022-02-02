@@ -37,6 +37,7 @@ const database = new ScylloClient<{
 	},
 });
 
+queue(() => database.awaitConnection());
 queue(() => database.useKeyspace(config.obj.SCYLO.str.keyspace, true));
 
 export = database;

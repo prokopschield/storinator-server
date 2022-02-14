@@ -18,7 +18,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import logger from './logger';
+import { logger } from '.';
 
 logger.error('test');
 logger.info('test');

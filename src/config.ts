@@ -33,6 +33,9 @@ const config = getConfig('storinator', {
 	PASSWORD_LENGTH: 64,
 	TOKEN_LENGTH: 64,
 	HASH_LENGTH: 64,
+	FREE_STORAGE_BYTES: 50 * 1024 * 1024, // 50 MB
+	FREE_STORAGE_FILES: 20, // 20 files
+	FREE_STORAGE_RESET: 1000 * 60 * 60 * 24, // 1 day
 });
 
 export = config;

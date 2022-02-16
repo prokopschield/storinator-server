@@ -19,9 +19,5 @@
 let lastTime = Date.now();
 
 export function generateUid(time = Date.now()) {
-	if (time <= lastTime) {
-		return ++lastTime;
-	} else {
-		return (lastTime = time);
-	}
+	return time <= lastTime ? ++lastTime : (lastTime = time);
 }

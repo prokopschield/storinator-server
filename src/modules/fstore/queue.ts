@@ -17,8 +17,9 @@
  */
 
 import { SerialQueue } from 'ps-std/lib/classes/SerialQueue';
+import { crash, errcode } from '../error';
 
-export const queueObj = new SerialQueue();
+export const queueObj = new SerialQueue((error) => crash(errcode.FILE_ERROR, error));
 
 export default queueObj;
 

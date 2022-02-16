@@ -17,7 +17,7 @@
  */
 
 import database from './db';
-import { default as queueObj, queue } from './queue';
+import { default as queueObject, queue } from './queue';
 import { File } from './types';
 
 const TABLE_NAME = 'files';
@@ -61,9 +61,9 @@ queue(() =>
 	)
 );
 
-queueObj.promise.then(() => {
+queueObject.promise.then(() => {
 	for (const column of ['owner', 'dirName', 'fileName']) {
-		queueObj.promise.then(() =>
+		queueObject.promise.then(() =>
 			queue(() =>
 				database.createIndex(
 					TABLE_NAME,

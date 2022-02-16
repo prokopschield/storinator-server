@@ -19,7 +19,7 @@
 export type User = {
 	username: string; // PK
 	password: string;
-	token: string;
+	authToken: string;
 	validFrom: BigInt;
 	validUntil: BigInt;
 	byteLimit: BigInt;

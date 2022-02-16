@@ -33,7 +33,7 @@ queue(() =>
 			password: {
 				type: 'ascii',
 			},
-			token: {
+			authToken: {
 				type: 'ascii',
 			},
 			validFrom: {

@@ -34,6 +34,10 @@ const database = new ScylloClient<{
 		contactPoints: [
 			...config.obj.SCYLO.obj.client.obj.contactPoints.array.map(String),
 		],
+		encoding: {
+			useBigIntAsLong: true,
+			useBigIntAsVarint: true,
+		},
 	},
 });
 

@@ -17,6 +17,7 @@
  */
 
 export * as db from './db';
+export * as error from './error';
 export * as fstore from './fstore';
 export * as ops from './ops';
 export * as uid from './uid';

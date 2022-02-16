@@ -62,7 +62,7 @@ queue(() =>
 );
 
 queueObj.promise.then(() => {
-	for (const column of ['owner', 'dir', 'name']) {
+	for (const column of ['owner', 'dirName', 'fileName']) {
 		queueObj.promise.then(() =>
 			queue(() =>
 				database.createIndex(

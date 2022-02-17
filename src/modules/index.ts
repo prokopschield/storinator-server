@@ -16,6 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * as auth from './auth';
 export * as db from './db';
 export * as error from './error';
 export * as fstore from './fstore';

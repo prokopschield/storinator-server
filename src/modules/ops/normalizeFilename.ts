@@ -21,5 +21,5 @@ import { relative, resolve } from 'node:path/posix';
 export function normalizeFilename(filename: string) {
 	return relative('/', resolve('/', filename))
 		.toLowerCase()
-		.replace(/[^\d./a-z\-]+/g, '');
+		.replace(/[^\d./a-z-]+/g, '');
 }

@@ -29,11 +29,12 @@ export async function readDir(
 	if (dirname.startsWith('users/')) {
 		const [, user, ...parts] = dirname.split(/\//g);
 
-		files.push(
-			...(await readDir(user, parts.join('/'))).filter(
-				(file) => file.sharedwith?.includes(username) || file.public
-			)
+		const user_files = await readDir(user, parts.join('/'));
+		const shared_files = user_files.filter(
+			(file) => file.sharedwith?.includes(username) || file.public
 		);
+
+		files.push(...shared_files);
 	}
 
 	return files;

@@ -19,12 +19,12 @@
 export type User = {
 	username: string; // PK
 	password: string;
-	authToken: string;
-	validFrom: BigInt;
-	validUntil: BigInt;
-	byteLimit: BigInt;
-	fileLimit: BigInt;
-	limitsReset: BigInt;
+	authtoken: string;
+	validfrom: BigInt;
+	validuntil: BigInt;
+	bytelimit: BigInt;
+	filelimit: BigInt;
+	limitsreset: BigInt;
 };
 
 export type Chunk = {
@@ -46,10 +46,10 @@ export type File = {
 	uid: BigInt; // PK
 	owner: string; // User.username
 	size: BigInt; // sum(Chunk.size)
-	numChunks: BigInt;
+	numchunks: BigInt;
 	chunks: bigint[]; // Array<FileChunk.uid>
-	dirName: string;
-	fileName: string;
-	sharedWith: string[]; // Array<username>
+	dirname: string;
+	filename: string;
+	sharedwith: string[]; // Array<username>
 	public: boolean;
 };

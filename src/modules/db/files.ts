@@ -36,20 +36,20 @@ queue(() =>
 			size: {
 				type: 'bigint',
 			},
-			numChunks: {
+			numchunks: {
 				type: 'bigint',
 			},
 			chunks: {
 				type: 'list',
 				typeDef: 'bigint',
 			},
-			dirName: {
+			dirname: {
 				type: 'ascii',
 			},
-			fileName: {
+			filename: {
 				type: 'ascii',
 			},
-			sharedWith: {
+			sharedwith: {
 				type: 'list',
 				typeDef: 'ascii',
 			},
@@ -62,7 +62,7 @@ queue(() =>
 );
 
 queueObject.promise.then(() => {
-	for (const column of ['owner', 'dirName', 'fileName']) {
+	for (const column of ['owner', 'dirname', 'filename']) {
 		queueObject.promise.then(() =>
 			queue(() =>
 				database.createIndex(

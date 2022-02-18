@@ -26,9 +26,9 @@ export async function verifyToken(
 ): Promise<boolean> {
 	const user = await database.users.get(username);
 
-	if (!user?.authToken) {
+	if (!user?.authtoken) {
 		return false;
 	}
 
-	return verify(token, user.authToken);
+	return verify(token, user.authtoken);
 }

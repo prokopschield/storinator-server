@@ -33,22 +33,22 @@ queue(() =>
 			password: {
 				type: 'ascii',
 			},
-			authToken: {
+			authtoken: {
 				type: 'ascii',
 			},
-			validFrom: {
+			validfrom: {
 				type: 'bigint',
 			},
-			validUntil: {
+			validuntil: {
 				type: 'bigint',
 			},
-			byteLimit: {
+			bytelimit: {
 				type: 'bigint',
 			},
-			fileLimit: {
+			filelimit: {
 				type: 'bigint',
 			},
-			limitsReset: {
+			limitsreset: {
 				type: 'bigint',
 			},
 		},

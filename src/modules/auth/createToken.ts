@@ -40,7 +40,7 @@ export async function createToken(
 		queue(async () => {
 			const token = hash(password, config.num.TOKEN_LENGTH);
 
-			user.authToken = hash(token, config.num.HASH_LENGTH);
+			user.authtoken = hash(token, config.num.HASH_LENGTH);
 			resolve(token);
 			await database.users.set(user);
 		});

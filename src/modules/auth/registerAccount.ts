@@ -41,17 +41,17 @@ export async function registerAccount(
 			}
 
 			const ret_token = hash(password, config.num.TOKEN_LENGTH);
-			const authToken = hash(ret_token, config.num.HASH_LENGTH);
+			const authtoken = hash(ret_token, config.num.HASH_LENGTH);
 
 			const user: database.types.User = {
 				username,
 				password: hash(password, config.num.HASH_LENGTH),
-				authToken,
-				byteLimit: BigInt(config.num.FREE_STORAGE_BYTES),
-				fileLimit: BigInt(config.num.FREE_STORAGE_FILES),
-				limitsReset: BigInt(generateUid()),
-				validFrom: BigInt(generateUid()),
-				validUntil: BigInt(
+				authtoken,
+				bytelimit: BigInt(config.num.FREE_STORAGE_BYTES),
+				filelimit: BigInt(config.num.FREE_STORAGE_FILES),
+				limitsreset: BigInt(generateUid()),
+				validfrom: BigInt(generateUid()),
+				validuntil: BigInt(
 					Date.now() + config.num.DEFAULT_TOKEN_VALIDITY
 				),
 			};

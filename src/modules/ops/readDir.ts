@@ -21,17 +21,17 @@ import { normalizeFilename } from './normalizeFilename';
 
 export async function readDir(
 	username: string,
-	dirName: string
+	dirname: string
 ): Promise<Pick<database.types.File, keyof database.types.File>[]> {
-	dirName = normalizeFilename(dirName);
-	const files = await database.files.getBy({ owner: username, dirName });
+	dirname = normalizeFilename(dirname);
+	const files = await database.files.getBy({ owner: username, dirname });
 
-	if (dirName.startsWith('users/')) {
-		const [, user, ...parts] = dirName.split(/\//g);
+	if (dirname.startsWith('users/')) {
+		const [, user, ...parts] = dirname.split(/\//g);
 
 		files.push(
 			...(await readDir(user, parts.join('/'))).filter(
-				(file) => file.sharedWith?.includes(username) || file.public
+				(file) => file.sharedwith?.includes(username) || file.public
 			)
 		);
 	}

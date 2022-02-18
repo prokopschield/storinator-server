@@ -27,7 +27,7 @@ export const queueObj = new SerialQueue((error) =>
 export default queueObj;
 
 export function queue<T>(callback: () => Promise<T>): Promise<T> {
-	return new Promise(async (resolve) => {
+	return new Promise((resolve) => {
 		queueObj.add(async () => {
 			resolve(await callback());
 		});

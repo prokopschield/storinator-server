@@ -19,7 +19,7 @@
 import { relative, resolve } from 'node:path/posix';
 
 export function normalizeFilename(filename: string) {
-	return relative('/', resolve('/', filename))
-		.toLowerCase()
-		.replace(/[^\d./a-z-]+/g, '');
+	const filtered = filename.toLowerCase().replace(/[^\d./a-z-]+/g, '');
+
+	return relative('/', resolve('/', filtered));
 }

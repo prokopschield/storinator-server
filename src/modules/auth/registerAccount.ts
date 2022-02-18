@@ -30,6 +30,7 @@ export async function registerAccount(
 	username = String(username)
 		.replace(/[^a-z]/gi, '')
 		.slice(0, 16);
+
 	if (!username) {
 		throw new Error('Invalid username.');
 	}
@@ -37,7 +38,7 @@ export async function registerAccount(
 	return new Promise((resolve, reject) => {
 		queue(async () => {
 			if (await database.users.get(username)) {
-				return reject(new Error(`Username taken.`));
+				return reject(new Error('Username taken.'));
 			}
 
 			const ret_token = hash(password, config.num.TOKEN_LENGTH);

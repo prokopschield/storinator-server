@@ -361,10 +361,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-doge-config@^0.3.16:
-  version "0.3.16"
-  resolved "https://registry.yarnpkg.com/doge-config/-/doge-config-0.3.16.tgz#e8a16f3727b097d0f006f428e3ca6b5708af904a"
-  integrity sha512-sxfBXIRPGqxaguLTdzxtBU63Vdy2QOOtWbCkeKEc1hL0FWVZKC7IY0n8+REZAdw3RUivoHu1o8fmCIftDqpEwQ==
+doge-config@^0.3.18:
+  version "0.3.18"
+  resolved "https://registry.yarnpkg.com/doge-config/-/doge-config-0.3.18.tgz#3879bba003ff9e2922e680f2e34dc4957b1401eb"
+  integrity sha512-VxTRVBNJDjpVrui+8YZ/wLASGaxqS/GyZYiWWgVnDDicqTtOZVmAAUlcdrHpDoleMs35ULUgEkpl0TA5rMJKpQ==
   dependencies:
     doge-json "^1.2.8"
 

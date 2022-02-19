@@ -25,7 +25,7 @@
 		"@lvksh/logger": "1.4.4",
 		"blakets": "^0.1.11",
 		"chalk": "^4",
-		"doge-config": "^0.3.16",
+		"doge-config": "^0.3.18",
 		"doge-passwd": "^0.1.2",
 		"doge-pow": "^0.1.0-4",
 		"openpgp": "^5.1.0",

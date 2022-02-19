@@ -19,6 +19,7 @@
 import { verify } from 'doge-passwd';
 
 import * as database from '../db';
+import { generateUid } from '../uid';
 
 export async function verifyToken(
 	username: string,
@@ -30,5 +31,11 @@ export async function verifyToken(
 		return false;
 	}
 
-	return verify(token, user.authtoken);
+	const moment = BigInt(generateUid());
+
+	return (
+		moment >= user.validfrom &&
+		moment <= user.validuntil &&
+		verify(token, user.authtoken)
+	);
 }

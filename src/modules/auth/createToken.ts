@@ -21,10 +21,12 @@ import { hash, verify } from 'doge-passwd';
 import config from '../../config';
 import * as database from '../db';
 import { queue } from '../db/queue';
+import { generateUid } from '../uid';
 
 export async function createToken(
 	username: string,
-	password: string
+	password: string,
+	validUntil: number | bigint | string = generateUid()
 ): Promise<string> {
 	const user = await database.users.get(username);
 
@@ -41,6 +43,8 @@ export async function createToken(
 			const token = hash(password, config.num.TOKEN_LENGTH);
 
 			user.authtoken = hash(token, config.num.HASH_LENGTH);
+			user.validfrom = BigInt(generateUid());
+			user.validuntil = BigInt(validUntil);
 			resolve(token);
 			await database.users.set(user);
 		});

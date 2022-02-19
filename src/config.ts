@@ -38,6 +38,14 @@ const config = getConfig('storinator', {
 	FREE_STORAGE_BYTES: 50 * 1024 * 1024, // 50 MB
 	FREE_STORAGE_FILES: 20, // 20 files
 	FREE_STORAGE_RESET: 1000 * 60 * 60 * 24, // 1 day
+
+	// API
+	ALLOW_DEFAULT_USER: false,
+	DEFAULT_USER: 'guest',
+	HTTP_PORT: 3000,
+	ERRMSG: {
+		INVALID_AUTH_HEADER: 'Invalid authentication header.',
+	},
 });
 
 export = config;

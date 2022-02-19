@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 import logger from '../logger';
 
 export enum errcode {

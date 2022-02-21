@@ -16,5 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from './odfhash';
-export * from './shorthash';
+import { shorthash } from './shorthash';
+
+export function odfhash(owner: string, dirname: string, filename: string) {
+	return shorthash({ owner, dirname, filename });
+}

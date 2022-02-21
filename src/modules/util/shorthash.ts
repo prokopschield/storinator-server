@@ -16,11 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * as api from './api';
-export * as auth from './auth';
-export * as db from './db';
-export * as error from './error';
-export * as fstore from './fstore';
-export * as ops from './ops';
-export * as uid from './uid';
-export * as util from './util';
+import { blake2s } from 'blakets';
+import { Hashable } from 'blakets/lib/util';
+
+import config from '../../config';
+
+const { SHORT_HASH_LENGTH } = config.num;
+
+const length = Math.floor((SHORT_HASH_LENGTH / 8) * 6);
+
+export function shorthash(...input: Hashable[]) {
+	return Buffer.from(blake2s(input, undefined, length)).toString('base64');
+}

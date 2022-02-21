@@ -16,11 +16,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * as api from './api';
-export * as auth from './auth';
-export * as db from './db';
-export * as error from './error';
-export * as fstore from './fstore';
-export * as ops from './ops';
-export * as uid from './uid';
-export * as util from './util';
+export * from './shorthash';

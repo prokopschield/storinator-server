@@ -39,6 +39,9 @@ const config = getConfig('storinator', {
 	FREE_STORAGE_FILES: 20, // 20 files
 	FREE_STORAGE_RESET: 1000 * 60 * 60 * 24, // 1 day
 
+	// UTIL
+	SHORT_HASH_LENGTH: 16,
+
 	// API
 	ALLOW_DEFAULT_USER: false,
 	DEFAULT_USER: 'guest',

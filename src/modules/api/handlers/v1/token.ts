@@ -43,10 +43,12 @@ export async function token(
 	}
 
 	return {
-		token: await createToken(
-			meta.username,
-			String(data.password),
-			String(data.validUntil)
-		),
+		token:
+			meta.username +
+			(await createToken(
+				meta.username,
+				String(data.password),
+				String(data.validUntil)
+			)),
 	};
 }

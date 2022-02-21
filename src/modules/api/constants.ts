@@ -16,10 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * as api from './api';
-export * as auth from './auth';
-export * as db from './db';
-export * as error from './error';
-export * as fstore from './fstore';
-export * as ops from './ops';
-export * as uid from './uid';
+import config from '../../config';
+
+export const ERRMGR_INVALID_AUTH_HEADER =
+	config.obj.ERRMSG.str.INVALID_AUTH_HEADER;
+
+export const { DEFAULT_USER } = config.str;

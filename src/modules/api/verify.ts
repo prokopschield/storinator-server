@@ -16,10 +16,32 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * as api from './api';
-export * as auth from './auth';
-export * as db from './db';
-export * as error from './error';
-export * as fstore from './fstore';
-export * as ops from './ops';
-export * as uid from './uid';
+import config from '../../config';
+import { createToken, verifyToken } from '../auth';
+import { DEFAULT_USER } from './constants';
+
+export async function verify(
+	username?: string,
+	password?: string,
+	token?: string
+): Promise<boolean> {
+	if (!username) {
+		return false;
+	}
+
+	if (username === DEFAULT_USER) {
+		return config.bool.ALLOW_DEFAULT_USER;
+	}
+
+	if (username && password) {
+		return Boolean(await createToken(username, password));
+	}
+
+	if (username && token) {
+		return verifyToken(username, token);
+	}
+
+	return false;
+}
+
+export default verify;

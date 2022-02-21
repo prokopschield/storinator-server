@@ -16,10 +16,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * as api from './api';
-export * as auth from './auth';
-export * as db from './db';
-export * as error from './error';
-export * as fstore from './fstore';
-export * as ops from './ops';
-export * as uid from './uid';
+export * as constants from './constants';
+export * from './handlers';
+export * as main from './main';
+export * from './read';
+export * as transforms from './transforms';
+export * from './types';
+export { verify } from './verify';

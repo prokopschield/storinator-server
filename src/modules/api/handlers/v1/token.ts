@@ -16,10 +16,37 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * as api from './api';
-export * as auth from './auth';
-export * as db from './db';
-export * as error from './error';
-export * as fstore from './fstore';
-export * as ops from './ops';
-export * as uid from './uid';
+import { IncomingMessage, ServerResponse } from 'node:http';
+
+import { createToken } from '../../../auth';
+import { read } from '../../read';
+import { parseJsonBuffer } from '../../transforms';
+import { RequestMetadata } from '../../types';
+
+export async function token(
+	meta: RequestMetadata,
+	req: IncomingMessage,
+	res: ServerResponse
+): Promise<object | void> {
+	const data = parseJsonBuffer(await read(req));
+
+	if (!data.password || !data.validUntil) {
+		res.statusCode = 400;
+
+		return {
+			error: 'Invalid request payload!',
+			valid: {
+				password: '<password>',
+				validUntil: '<time in milis>',
+			},
+		};
+	}
+
+	return {
+		token: await createToken(
+			meta.username,
+			String(data.password),
+			String(data.validUntil)
+		),
+	};
+}

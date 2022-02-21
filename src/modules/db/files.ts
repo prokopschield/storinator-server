@@ -30,6 +30,9 @@ queue(() =>
 			uid: {
 				type: 'bigint',
 			},
+			odf: {
+				type: 'ascii',
+			},
 			owner: {
 				type: 'ascii',
 			},

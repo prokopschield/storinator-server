@@ -44,6 +44,7 @@ export type FileChunk = {
 
 export type File = {
 	uid: BigInt; // PK
+	odf: string; // shorthash({ owner, dirname, filename })
 	owner: string; // User.username
 	size: BigInt; // sum(Chunk.size)
 	numchunks: BigInt;
